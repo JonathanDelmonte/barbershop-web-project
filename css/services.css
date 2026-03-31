@@ -3,7 +3,7 @@
   width: 100%;
 
   padding: 80px 20px 60px;
-  background: linear-gradient(to bottom, #000000 0%, #141414 55%, #2e2e2e 100%);
+  background: linear-gradient(to bottom, #000000 0%, #141414 55%, #181818 100%);
 
   display: grid;
   grid-template-rows: 1fr auto auto auto 1fr;
@@ -208,7 +208,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: clamp(30px, 30vw, 500px);
+  width: clamp(30px, 50vw, 500px);
   padding: 16px 32px;
   background-color: #8f7416;
   color: white;
