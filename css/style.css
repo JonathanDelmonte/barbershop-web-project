@@ -1,18 +1,18 @@
 body {
-  font-family: Georgia, "Times New Roman", serif;
-  background-color: #000;
-  color: #fff;
+    font-family: Georgia, "Times New Roman", serif;
+    background-color: #000;
+    color: #fff;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
 button {
-  border: none;
-  background: none;
-  cursor: pointer;
+    border: none;
+    background: none;
+    cursor: pointer;
 }
 
 :root {

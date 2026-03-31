@@ -3,6 +3,9 @@
 }
 
 .services {
-  min-height: 100vh;
+    min-height: 100vh;
+}
 
+.team {
+    min-height: 65vh;
 }
