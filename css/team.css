@@ -234,30 +234,6 @@
     right: 20px;
 }
 
-.team-button {
-    position: relative;
-    z-index: 2;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: clamp(30px, 50vw, 500px);
-    padding: 16px 32px;
-    background: linear-gradient(to right, #7f680f, #b89b00, #7f680f);
-    color: white;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1rem;
-    border-radius: 14px;
-    transition: 0.3s ease;
-    margin: auto;
-}
-
-.team-button:hover {
-    transform: translateY(-3px);
-    filter: brightness(1.08);
-}
-
 .team-caption {
     position: relative;
     z-index: 2;

@@ -9,3 +9,26 @@
 .team {
     min-height: 65vh;
 }
+
+.section-fade {
+  width: 100%;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.section-fade-top-subscription {
+    opacity: 100%;
+    height: 50px;
+    background: linear-gradient(to bottom, #222222 0%, #000000 100%);
+}
+
+.section-fade-bottom-subscription {
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(
+    to bottom,
+    #000000 0%,
+    #0f0f0f 50%,
+    #181818 100%
+  );
+}
