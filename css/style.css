@@ -18,3 +18,8 @@ button {
 :root {
     --texto: FEE800;
 }
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
