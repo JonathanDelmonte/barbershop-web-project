@@ -1,0 +1,403 @@
+.awards {
+    background: #181818;
+    padding: 28px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.awards-row {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    min-height: 300px;
+    gap: 0;
+    overflow: hidden;
+}
+
+.awards-row-bottom {
+    grid-template-columns: 1.15fr 0.85fr;
+}
+
+.awards-text {
+    background: #000000;
+    color: #f3f3f3;
+    padding: 34px 34px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+.awards-text h2 {
+    font-size: clamp(2rem, 2.8vw, 3.2rem);
+    line-height: 0.98;
+    font-weight: 700;
+    margin-bottom: 18px;
+    max-width: 420px;
+}
+
+.awards-text p {
+    font-size: clamp(1rem, 1.05vw, 1.18rem);
+    line-height: 1.45;
+    color: #e2e2e2;
+    max-width: 520px;
+}
+
+.awards-text-left {
+    padding-left: 80px;
+}
+.awards-text-right {
+    align-items: flex-end;
+    text-align: right;
+    padding-right: 80px;
+}
+
+.awards-text-right h2,
+.awards-text-right p {
+    max-width: 540px;
+}
+
+.awards-media {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 300px;
+    padding: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.awards-media::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform: scale(1.06);
+    filter: blur(3px);
+    z-index: -3;
+}
+
+.awards-media-top::before {
+    background-image: url("../assets/images/awards-fidelidade.jpg");
+}
+
+.awards-media-bottom::before {
+    background-image: url("../assets/images/awards-combos.jpg");
+}
+
+.awards-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.34)),
+        rgba(169, 134, 10, 0.26);
+    z-index: -2;
+}
+
+.awards-cards {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(14px, 1.8vw, 28px);
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.awards-card {
+    flex: 1 1 clamp(120px, 11vw, 170px);
+    max-width: 190px;
+    min-height: clamp(115px, 10vw, 160px);
+    padding: clamp(12px, 1vw, 18px) clamp(10px, 0.9vw, 16px);
+    border-radius: 18px;
+    background: rgba(0, 0, 0, 0.88);
+    border: 1px solid rgba(212, 175, 55, 0.10);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(8px, 0.8vw, 14px);
+
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    transition:
+        transform 0.38s ease,
+        box-shadow 0.38s ease,
+        border-color 0.38s ease,
+        background 0.38s ease;
+}
+
+.awards-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at top,
+        rgba(212, 175, 55, 0.14),
+        transparent 58%
+    );
+    opacity: 0;
+    transition: opacity 0.38s ease;
+    pointer-events: none;
+}
+
+.awards-icon {
+    color: #e0bc38;
+    flex-shrink: 0;
+    transition:
+        transform 0.38s ease,
+        filter 0.38s ease,
+        color 0.38s ease;
+    will-change: transform;
+}
+
+.awards-card h3 {
+    color: #e0bc38;
+    font-size: clamp(0.88rem, 0.95vw, 1.05rem);
+    line-height: 1.08;
+    font-weight: 700;
+    max-width: 90%;
+    transition:
+        transform 0.38s ease,
+        color 0.38s ease,
+        letter-spacing 0.38s ease;
+}
+
+.awards-icon-trophy {
+    width: clamp(24px, 2vw, 34px);
+    height: clamp(24px, 2vw, 34px);
+}
+
+.awards-icon-tag {
+    width: clamp(23px, 1.9vw, 33px);
+    height: clamp(23px, 1.9vw, 33px);
+}
+
+.awards-icon-gift {
+    width: clamp(24px, 2vw, 35px);
+    height: clamp(21px, 1.8vw, 31px);
+}
+
+.awards-icon-discount {
+    width: clamp(24px, 2vw, 34px);
+    height: clamp(24px, 2vw, 34px);
+}
+
+.awards-icon-brain {
+    width: clamp(24px, 2vw, 34px);
+    height: clamp(24px, 2vw, 34px);
+}
+
+.awards-icon-box {
+    width: clamp(24px, 2vw, 34px);
+    height: clamp(27px, 2.2vw, 38px);
+}
+
+.awards-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    background: rgba(8, 8, 8, 0.98);
+    border-color: rgba(212, 175, 55, 0.22);
+    cursor: pointer;
+}
+
+.awards-card:hover::before {
+    opacity: 1;
+}
+
+.awards-card:hover .awards-icon {
+    transform: translateY(-4px) scale(1.12) rotate(-4deg);
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.35));
+}
+
+.awards-card:hover h3 {
+    transform: translateY(-2px);
+    letter-spacing: 0.3px;
+    color: #f0cd58;
+}
+
+.awards-card:hover .awards-icon {
+    animation: awardsIconFloat 1.8s ease-in-out infinite;
+}
+
+@keyframes awardsIconFloat {
+    0% {
+        transform: translateY(-4px) scale(1.12) rotate(-4deg);
+    }
+    50% {
+        transform: translateY(-7px) scale(1.15) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-4px) scale(1.12) rotate(-4deg);
+    }
+}
+
+@media (max-width: 1100px) {
+    .awards-row,
+    .awards-row-bottom {
+        grid-template-columns: 1fr;
+    }
+
+    .awards-text,
+    .awards-text-right {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .awards-text h2,
+    .awards-text-right h2,
+    .awards-text p,
+    .awards-text-right p {
+        max-width: 100%;
+    }
+
+    .awards-media {
+        min-height: 260px;
+    }
+}
+
+@media (max-width: 640px) {
+    .awards {
+        padding: 20px 0px;
+        gap: 14px;
+    }
+
+    .awards-text {
+        padding: 26px 22px;
+    }
+
+    .awards-text h2 {
+        font-size: 1.7rem;
+        margin-bottom: 14px;
+    }
+
+    .awards-text p {
+        font-size: 0.98rem;
+        line-height: 1.4;
+    }
+
+    .awards-media {
+        padding: 12px 8px;
+        min-height: 220px;
+    }
+
+    .awards-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: clamp(6px, 1.8vw, 12px);
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .awards-card {
+        flex: 0 1 clamp(82px, 26vw, 120px);
+        min-height: clamp(82px, 26vw, 120px);
+        padding: clamp(6px, 1.2vw, 10px);
+        gap: 15px;
+    }
+
+    .awards-card h3 {
+        font-size: clamp(0.58rem, 1.9vw, 0.82rem);
+        line-height: 1.02;
+        max-width: 96%;
+    }
+
+    .awards-icon-trophy,
+    .awards-icon-tag,
+    .awards-icon-gift,
+    .awards-icon-discount,
+    .awards-icon-brain {
+        width: clamp(18px, 5vw, 28px);
+        height: clamp(18px, 5vw, 28px);
+    }
+
+    .awards-icon-box {
+        width: clamp(18px, 5vw, 28px);
+        height: clamp(20px, 5.5vw, 32px);
+    }
+
+    .awards-icon-box {
+        width: 22px;
+        height: 25px;
+    }
+}
+
+@media (min-width: 1920px) {
+    .awards {
+        padding: 28px 0;
+        overflow: visible;
+    }
+
+    .awards-row {
+        width: 1920px;
+        margin: 0 auto;
+        position: relative;
+        overflow: visible;
+    }
+
+    .awards-text,
+    .awards-media {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* row de cima */
+    .awards-row-top .awards-text::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 100%;
+        width: 100vw;
+        background: #000;
+        z-index: -1;
+    }
+
+    .awards-row-top::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 100%;
+        width: 100vw;
+        background: rgba(212, 175, 55, 0.22);
+        filter: blur(4px);
+        z-index: 0;
+    }
+
+    /* row de baixo */
+    .awards-row-bottom::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 100%;
+        width: 100vw;
+        background: rgba(212, 175, 55, 0.22);
+        filter: blur(4px);
+        z-index: 0;
+    }
+
+    .awards-row-bottom .awards-text::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 100%;
+        width: 100vw;
+        background: #000;
+        z-index: -1;
+    }
+}

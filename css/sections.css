@@ -10,6 +10,10 @@
     min-height: 65vh;
 }
 
+.subscription {
+  min-height: 50vh;
+}
+
 .section-fade {
   width: 100%;
   pointer-events: none;
@@ -18,13 +22,13 @@
 
 .section-fade-top-subscription {
     opacity: 100%;
-    height: 50px;
+    height: 100px;
     background: linear-gradient(to bottom, #222222 0%, #000000 100%);
 }
 
 .section-fade-bottom-subscription {
   width: 100%;
-  height: 100px;
+  height: 50px;
   background: linear-gradient(
     to bottom,
     #000000 0%,

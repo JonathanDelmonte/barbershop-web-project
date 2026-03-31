@@ -1,5 +1,4 @@
 .subscription {
-  min-height: 50vh;
   display: grid;
   grid-template-columns: minmax(220px, 420px) 4px minmax(280px, 650px);
   align-items: center;
@@ -52,7 +51,7 @@
   margin: 20px 0;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1150px) {
   .subscription {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
