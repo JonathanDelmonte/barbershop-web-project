@@ -125,6 +125,35 @@
     justify-self: center;
 }
 
+.footer-contact-item,
+.footer-social-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 48px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    color: var(--footer-text);
+    text-decoration: none;
+    font-size: 1rem;
+    line-height: 1.5;
+    background: transparent;
+    box-shadow: none;
+    transition:
+        transform 0.28s ease,
+        color 0.28s ease,
+        filter 0.28s ease,
+        opacity 0.28s ease;
+}
+
+.footer-contact-item:hover,
+.footer-social-item:hover {
+    transform: translateY(-2px) scale(1.01);
+    color: var(--footer-text);
+    background: transparent;
+    box-shadow: none;
+}
+
 .footer-icon {
     flex-shrink: 0;
     display: block;
@@ -132,30 +161,27 @@
     color: var(--texto);
     fill: currentColor;
     transition:
-        transform 0.28s ease,
         color 0.28s ease,
-        filter 0.28s ease;
+        filter 0.28s ease,
+        opacity 0.28s ease;
 }
 
 .footer-contact-item span,
 .footer-social-item span {
     transition:
-        transform 0.28s ease,
         color 0.28s ease,
-        letter-spacing 0.28s ease;
+        opacity 0.28s ease;
 }
 
-/* HOVER EM CONJUNTO */
 .footer-contact-item:hover .footer-icon,
 .footer-social-item:hover .footer-icon {
-    transform: translateY(-1px) scale(1.12);
     color: #e4d230;
+    filter: drop-shadow(0 0 5px rgba(228, 210, 48, 0.14));
 }
 
 .footer-contact-item:hover span,
 .footer-social-item:hover span {
-    transform: translateX(2px);
-    color: #ffffff;
+    color: var(--texto);
 }
 
 /* ÍCONES */
