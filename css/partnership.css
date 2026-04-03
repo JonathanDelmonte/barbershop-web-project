@@ -1,0 +1,263 @@
+.partnership {
+    width: 100%;
+    border-top: 2px solid #c7b707;
+    background-color: #181818;
+}
+
+.partnership-wrapper {
+    width: 100%;
+    min-height: 40vh;
+    display: flex;
+    margin: 0 auto;
+}
+
+.partnership-left {
+    position: relative;
+    width: 60%;
+    min-height: 40vh;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.partnership-right {
+    width: 40%;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 40px 30px;
+    text-align: center;
+    background-color: #181818;
+}
+
+.partnership-left::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../assets/images/fundo-parcerias.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.08);
+    filter: blur(4px);
+    z-index: 0;
+}
+
+.partnership-left::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(199, 183, 7, 0.55),
+        rgba(199, 183, 7, 0.45)
+    );
+    z-index: 1;
+}
+
+.partnership-logos {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 700px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 140px 45px;
+    align-items: center;
+    justify-items: center;
+}
+
+.partnership-logos img {
+    max-width: 140px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.88;
+
+    transition:
+        transform 0.35s ease,
+        opacity 0.35s ease,
+        filter 0.35s ease;
+}
+
+.partner-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+.partner-item img {
+    position: relative;
+    z-index: 2;
+    max-width: 140px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+
+    filter: brightness(0) invert(1);
+    opacity: 0.88;
+
+    transition:
+        transform 0.45s ease,
+        opacity 0.45s ease,
+        filter 0.45s ease;
+}
+
+/* glow suave atrás da logo */
+.partner-item::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(199, 183, 7, 0.28) 0%,
+        rgba(199, 183, 7, 0.12) 35%,
+        rgba(199, 183, 7, 0.00) 70%
+    );
+    opacity: 0;
+    transform: scale(0.6);
+    transition:
+        opacity 0.45s ease,
+        transform 0.45s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* faixa de luz */
+.partner-item::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -35%;
+    width: 30%;
+    height: 140%;
+    transform: translateY(-50%) rotate(18deg);
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.18),
+        transparent
+    );
+    opacity: 0;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* hover */
+.partner-item:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.partner-item:hover::after {
+    opacity: 1;
+    animation: partnerShine 0.9s ease forwards;
+}
+
+.partner-item:hover img {
+    opacity: 1;
+    transform: scale(1.06);
+    filter:
+        brightness(0)
+        invert(1)
+        drop-shadow(0 0 8px rgba(255, 232, 120, 0.18));
+}
+
+@keyframes partnerShine {
+    0% {
+        left: -35%;
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        left: 120%;
+        opacity: 0;
+    }
+}
+
+.partnership-right-text {
+    margin-top: 20%;
+}
+
+.partnership-right-text h2 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.partnership-right-text p {
+    font-size: 1.1rem;
+    color: #fff;
+    opacity: 0.9;
+}
+
+.partnership-button {
+    max-width: 400px;
+}
+
+
+/* RESPONSIVO */
+
+@media (min-width: 1920px) {
+    .partnership-wrapper {
+        max-width: 1920px;
+    }
+}
+
+@media (max-width: 900px) {
+    .partnership {
+        flex-direction: column;
+    }
+
+    .partnership-left,
+    .partnership-right {
+        width: 100%;
+    }
+
+    .partnership-left {
+        min-height: 320px;
+    }
+
+    .partnership-logos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px 0px;
+    }
+
+    .partnership-logos img {
+        max-width: 120px;
+    }
+}
+
+@media (max-width: 500px) {
+    .partnership-left {
+        padding: 30px 20px;
+    }
+
+    .partnership-right {
+        padding: 35px 20px;
+    }
+
+    .partnership-logos {
+        grid-template-columns: 1fr 1fr;
+        gap: 50px 30px;
+    }
+
+    .partnership-logos img {
+        max-width: 100px;
+    }
+}
