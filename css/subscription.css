@@ -7,17 +7,6 @@
     padding: 60px 40px;
 }
 
-.subscription-logo {
-    margin-left: 0;
-    min-width: 0;
-}
-
-.subscription-image {
-    width: 100%;
-    max-width: 420px;
-    display: block;
-}
-
 #subscription-line {
     width: 4px;
     height: 400px;
@@ -85,4 +74,32 @@
     .subscription-button {
       align-self: center;
     }
+}
+
+.subscription-logo {
+    display: inline-block;
+}
+
+.subscription-image {
+    display: block;
+    cursor: pointer;
+    transform-origin: center center;
+    backface-visibility: hidden;
+    will-change: transform, filter;
+    transition:
+        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.18));
+}
+
+.subscription-logo:hover .subscription-image {
+    transform: translateY(-8px) scale(1.025);
+    filter:
+        drop-shadow(0 18px 30px rgba(0, 0, 0, 0.24))
+        drop-shadow(0 0 12px rgba(255, 232, 0, 0.10));
+}
+
+.subscription-logo:active .subscription-image {
+    transform: translateY(-2px) scale(0.985);
+    transition-duration: 0.18s;
 }

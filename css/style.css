@@ -50,3 +50,26 @@ button {
     color: #000;
 }
 
+/* animação global suave para títulos */
+
+h1,
+h2,
+h3,
+h4 {
+    transition:
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        color 0.35s ease,
+        text-shadow 0.35s ease,
+        opacity 0.35s ease;
+    will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    h1:hover,
+    h2:hover,
+    h3:hover,
+    h4:hover {
+        transform: translateY(-2px);
+        text-shadow: 0 6px 18px rgba(255, 232, 0, 0.08);
+    }
+}
