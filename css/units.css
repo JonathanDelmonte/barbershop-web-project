@@ -179,6 +179,60 @@
     display: block;
 }
 
+.units-frame {
+    position: relative;
+}
+
+.units-frame iframe {
+    pointer-events: none;
+}
+
+.units-frame.is-unlocked iframe {
+    pointer-events: auto;
+}
+
+.units-frame-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 18px;
+    background: rgba(0, 0, 0, 0.14);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-family: inherit;
+    cursor: pointer;
+    backdrop-filter: blur(2px);
+
+    opacity: 0;
+    transition: opacity 0.25s ease, background 0.25s ease;
+
+    margin: 14px 14px 12px 14px;
+}
+
+.tour {
+    margin: 0;
+}
+
+.units-frame:hover .units-frame-overlay,
+.units-frame.is-locked .units-frame-overlay {
+    opacity: 1;
+}
+
+.units-frame-overlay:hover {
+    background: rgba(0, 0, 0, 0.22);
+}
+
+.units-frame.is-unlocked .units-frame-overlay {
+    opacity: 0;
+    pointer-events: none;
+}
+
 @media (max-width: 1300px) {
     .units-right {
         padding-right: 30px;

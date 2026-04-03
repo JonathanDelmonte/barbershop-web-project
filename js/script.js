@@ -69,3 +69,28 @@ prevBtn.addEventListener("click", () => {
 
 updateCarousel();
 startAutoSlide();
+
+document.querySelectorAll('.units-frame').forEach((frame) => {
+    const overlay = frame.querySelector('.units-frame-overlay');
+
+    if (!overlay) return;
+
+    overlay.addEventListener('click', () => {
+        frame.classList.remove('is-locked');
+        frame.classList.add('is-unlocked');
+    });
+
+    frame.addEventListener('mouseleave', () => {
+        frame.classList.remove('is-unlocked');
+        frame.classList.add('is-locked');
+    });
+});
+
+document.addEventListener('click', (event) => {
+    document.querySelectorAll('.units-frame.is-unlocked').forEach((frame) => {
+        if (!frame.contains(event.target)) {
+            frame.classList.remove('is-unlocked');
+            frame.classList.add('is-locked');
+        }
+    });
+});
