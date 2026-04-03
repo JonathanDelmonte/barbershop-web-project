@@ -34,7 +34,6 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    color: white;
 
     grid-row: 2;
 }
@@ -67,7 +66,6 @@
     max-width: 650px;
     font-size: clamp(1rem, 1.5vw, 1.25rem);
     line-height: 1.5;
-    color: #d7d7d7;
 }
 
 .services-presentation {
@@ -166,7 +164,6 @@
 }
 
 .services-overlay h4 {
-    color: #ffffff;
     font-size: 1.9rem;
     font-weight: 700;
     letter-spacing: 1px;
@@ -222,26 +219,8 @@
 }
 
 .services-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     width: clamp(30px, 50vw, 500px);
-    padding: 16px 32px;
-    background-color: #8f7416;
-    color: white;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1rem;
-    border-radius: 14px;
-    transition: 0.3s ease;
-    margin: auto;
-
     grid-row: 4;
-}
-
-.services-button:hover {
-    background-color: #a88a1c;
-    transform: translateY(-2px);
 }
 
 @media (max-width: 1100px) {

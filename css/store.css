@@ -36,13 +36,6 @@
     width: 100%;
 }
 
-.store-gradient-text {
-    background: linear-gradient(180deg, #c79d1f 0%, #fee800 45%, #988000 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
 .store-text h2 {
     font-size: clamp(2.2rem, 4vw, 3.5rem);
     line-height: 1.05;
@@ -54,7 +47,6 @@
     width: min(100%, 340px);
     font-size: clamp(1rem, 1.4vw, 1.2rem);
     line-height: 1.5;
-    color: #e6e6e6;
 }
 
 .store-text h3 {

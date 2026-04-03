@@ -50,17 +50,12 @@
     font-size: clamp(2.3rem, 2vw, 2.5rem);
     line-height: 1;
     margin-bottom: 25px;
-    color: #ffffff;
 }
 
 .final-block h2 {
     font-size: clamp(2.3rem, 2vw, 2.5rem);
     line-height: 1;
     margin-bottom: 28px;
-    background: linear-gradient(180deg, #c79d1f 0%, #fee800 45%, #988000 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
 }
 
 .final-card {
@@ -102,7 +97,6 @@
 
 .final-contact-row span,
 .final-address span {
-    color: #ffffff;
     font-size: 1.15rem;
     font-weight: 500;
     min-width: 95px;
@@ -111,7 +105,6 @@
 .final-work-card p,
 .final-contact-row p,
 .final-address p {
-    color: #ffffff;
     font-size: 1.1rem;
     line-height: 1.22;
     margin: 0;
@@ -181,31 +174,11 @@
 }
 
 .final-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     margin-top: 30px;
     width: 100%;
     max-width: 405px;
-    min-width: unset;
-    min-height: 56px;
-    margin-top: 26px;
-    min-height: 58px;
-    padding: 14px 28px;
-    border: 1.5px solid #c9b100;
-    border-radius: 18px;
-    background: rgba(0, 0, 0, 0.4);
-    color: #d4d4d4;
-    text-decoration: none;
     font-size: 1.05rem;
     font-weight: 700;
-    transition: 0.3s ease;
-}
-
-.final-button:hover {
-    background: rgba(201, 177, 0, 0.1);
-    color: #ffffff;
-    transform: translateY(-2px);
 }
 
 @media (max-width: 1250px) {

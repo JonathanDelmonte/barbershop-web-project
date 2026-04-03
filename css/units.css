@@ -99,7 +99,6 @@
 .units-location-info {
     padding: 28px 22px 26px;
     min-height: 280px;
-    color: #ffffff;
 }
 
 .units-location-info h2 {
@@ -110,8 +109,7 @@
 }
 
 .units-location-info h2 span {
-    font-size: 1rem;
-    color: #cfcfcf;
+    font-size: 1.1rem;
     font-weight: 300;
     margin-left: 10px;
 }
@@ -130,7 +128,7 @@
     width: 22px;
     height: 22px;
     margin-top: 3px;
-    fill: rgba(255, 255, 255, 0.85);
+    fill: rgb(255 255 255 / 80%);
     flex-shrink: 0;
 }
 
@@ -138,7 +136,6 @@
     margin: 0;
     font-size: 1.08rem;
     line-height: 1.5;
-    color: #e6e6e6;
 }
 
 .units-right {
@@ -151,16 +148,14 @@
 .units-text h2 {
     font-size: clamp(2.35rem, 3vw, 3.05rem);
     line-height: 1.02;
-    color: #ffffff;
     margin-bottom: 18px;
     max-width: 720px;
 }
 
 .units-text p {
-    max-width: 700px;
-    font-size: clamp(1rem, 1.08vw, 1.08rem);
+    max-width: 650px;
+    font-size: clamp(1.1rem, 1.08vw, 1.2rem);
     line-height: 1.6;
-    color: #e0e0e0;
 }
 
 .units-tour-frame {
