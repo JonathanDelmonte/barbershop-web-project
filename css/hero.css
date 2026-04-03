@@ -21,7 +21,7 @@
     object-fit: cover;
     pointer-events: none;
     z-index: 0;
-    filter: blur(20px) brightness(0.55);
+    filter: blur(15px) brightness(0.55);
 }
 
 .hero-overlay {
@@ -149,53 +149,4 @@
 
 .icon-share {
     width: 23px; height: 26px;
-}
-
-@media (max-width: 700px) {
-    .hero {
-      padding: 16px 16px 95px;
-    }
-
-    .hero-content h1 {
-        font-size: clamp(1.8rem, 9vw, 2.6rem);
-    }
-
-    .hero-content p {
-        width: min(100%, calc(100% - 100px));
-        font-size: 0.95rem;
-        margin-bottom: 20px;
-    }
-
-    .hero-button {
-        font-size: 0.9rem;
-        padding: 20px 16px;
-    }
-
-    .hero-social {
-        gap: 30px;
-    }
-
-    .hero-social a {
-        width: 36px;
-        height: 36px;
-      }
-}
-
-@media (max-height: 500px) {
-    .hero {
-        padding-top: 20px;
-        padding-bottom: 40px;
-    }
-
-    .hero-content h1 {
-        margin-bottom: 20px;
-    }
-
-    .hero-content p {
-        margin-bottom: 20px;
-    }
-
-    .hero-social {
-        gap: 20px;
-      }
 }

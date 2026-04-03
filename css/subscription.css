@@ -40,42 +40,6 @@
     margin: 20px 0;
 }
 
-@media (max-width: 1150px) {
-    .subscription {
-      grid-template-columns: 1fr;
-      grid-template-rows: auto auto auto;
-      text-align: center;
-      padding: 50px 24px;
-    }
-
-    .subscription-logo {
-      justify-self: center;
-    }
-
-    .subscription-image {
-      max-width: 280px;
-    }
-
-    #subscription-line {
-      width: clamp(30px, 70vw, 350px);
-      height: 4px;
-      justify-self: center;
-      background: linear-gradient(to right, #c79d1f, #fee800, #988000);
-    }
-
-    .subscription-content {
-      align-items: center;
-    }
-
-    .subscription-content p {
-      max-width: 100%;
-    }
-
-    .subscription-button {
-      align-self: center;
-    }
-}
-
 .subscription-logo {
     position: relative;
     display: inline-block;
