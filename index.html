@@ -8,9 +8,11 @@
 
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sections.css">
+
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="css/services.css">
-    <link rel="stylesheet" href="css/sections.css">
     <link rel="stylesheet" href="css/team.css">
     <link rel="stylesheet" href="css/subscription.css">
     <link rel="stylesheet" href="css/awards.css">
@@ -20,12 +22,50 @@
     <link rel="stylesheet" href="css/final.css">
     <link rel="stylesheet" href="css/partnership.css">
     <link rel="stylesheet" href="css/footer.css">
+
     <link rel="stylesheet" href="css/responsive.css">
 
 </head>
 <body>
 
-    <section class="hero">
+    <header class="site-header">
+        <div class="site-header-wrapper">
+            <a href="#hero" class="site-header__brand" aria-label="Voltar ao início">
+                <svg class="site-header__logo" aria-hidden="true">
+                    <use href="assets/icons/sprite.svg#icon-header-logo"></use>
+                </svg>
+            </a>
+            <button
+                class="site-header__toggle"
+                type="button"
+                aria-controls="site-menu"
+                aria-expanded="false"
+                aria-label="Abrir menu"
+            >
+                <svg class="site-header__toggle-icon" aria-hidden="true">
+                    <use href="assets/icons/sprite.svg#icon-header-menu"></use>
+                </svg>
+            </button>
+        </div>
+
+        <nav class="site-menu" id="site-menu" aria-hidden="true">
+            <div class="site-menu__panel">
+                <a class="site-menu__link" data-target="services" data-offset="230" href="#services">Serviços</a>
+                <a class="site-menu__link" data-target="team" data-offset="150" href="#team">Agendar</a>
+                <a class="site-menu__link" data-target="subscription" data-offset="200" href="#subscription">Clube de Assinaturas</a>
+                <a class="site-menu__link" data-target="awards" data-offset="130" href="#awards">Programa de Fidelidade</a>
+                <a class="site-menu__link" data-target="awards" data-offset="260" href="#awards">Combos e Ofertas</a>
+                <a class="site-menu__link" data-target="store" data-offset="180" href="#store">Loja</a>
+                <a class="site-menu__link" data-target="units" data-offset="200" href="#units">Unidades</a>
+                <a class="site-menu__link" data-target="school" data-offset="100" href="#school">Escola de Barbeiros</a>
+                <a class="site-menu__link" data-target="final" data-offset="230" href="#final">Contato</a>
+                <a class="site-menu__link" data-target="final" data-offset="390" href="#final">Seja um Franqueado</a>
+                <a class="site-menu__link" data-target="final" data-offset="390" href="#final">Sobre</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
         <video class="hero-video" autoplay muted loop playsinline>
         <source src="assets/video/Fundo-Section-Inicial.mp4" type="video/mp4">
         Seu navegador não suporta vídeo em HTML5.
@@ -74,7 +114,7 @@
     </section>
 
 
-    <section class="services">
+    <section id="services" class="services">
 
         <div class="services-content">
             <h2 class="white-premium">O QUE OFERECEMOS</h2>
@@ -144,7 +184,7 @@
 
     </section>
 
-    <section class="team">
+    <section id="team" class="team">
         <div class="team-bg"></div>
         <div class="team-overlay"></div>
 
@@ -193,7 +233,7 @@
 
     </section>
 
-    <section class="subscription">
+    <section id="subscription" class="subscription">
 
         <div class="subscription-logo">
             <img class="subscription-image" src="assets/images/alphasubscription.png" alt="">
@@ -213,7 +253,7 @@
 
     <div class="section-fade section-fade-bottom-subscription"></div>
 
-    <section class="awards">
+    <section id="awards" class="awards">
         <div class="awards-row awards-row-top">
             <div class="awards-text awards-text-left">
                 <h2 class="white-premium">Programa de Fidelidade</h2>
@@ -291,7 +331,7 @@
         </div>
     </section>
 
-    <section class="store">
+    <section id="store" class="store">
         <div class="store-wrapper">
             <div class="store-left">
                 <div class="store-text">
@@ -343,7 +383,7 @@
         </div>
     </section>
 
-    <section class="units">
+    <section id="units" class="units">
         <div class="units-bg"></div>
 
         <div class="units-wrapper">
@@ -416,7 +456,7 @@
         </div>
     </section>
 
-    <section class="school">
+    <section id="school" class="school">
 
         <div class="school-logo">
             <img class="school-image" src="assets/images/alphaschool.png" alt="">
@@ -433,7 +473,7 @@
 
     </section>
 
-    <section class="final">
+    <section id="final" class="final">
         <div class="final-bg"></div>
         <div class="final-overlay"></div>
 
