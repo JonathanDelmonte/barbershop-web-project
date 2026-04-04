@@ -360,3 +360,64 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", updateHeaderState, { passive: true });
     window.addEventListener("resize", updateHeaderState);
 });
+
+/* =========================================
+   INTRO / TELA DE ABERTURA
+========================================= */
+(() => {
+  const intro = document.getElementById("site-intro");
+  const heroVideo = document.querySelector(".hero-video");
+
+  if (!intro) return;
+
+  const body = document.body;
+
+  function finishIntro() {
+    intro.classList.add("is-logo-hidden");
+
+    setTimeout(() => {
+      intro.classList.add("is-hidden");
+      body.classList.remove("intro-loading");
+
+      setTimeout(() => {
+        intro.remove();
+      }, 800);
+    }, 350);
+  }
+
+  function startIntroSequence() {
+    setTimeout(() => {
+      intro.classList.add("is-logo-visible");
+    }, 180);
+
+    setTimeout(() => {
+      finishIntro();
+    }, 2200);
+  }
+
+  function waitForVideoOrFallback() {
+    let introStarted = false;
+
+    function startOnce() {
+      if (introStarted) return;
+      introStarted = true;
+      startIntroSequence();
+    }
+
+    if (!heroVideo) {
+      startOnce();
+      return;
+    }
+
+    if (heroVideo.readyState >= 3) {
+      startOnce();
+      return;
+    }
+
+    heroVideo.addEventListener("loadeddata", startOnce, { once: true });
+
+    setTimeout(startOnce, 1200);
+  }
+
+  window.addEventListener("load", waitForVideoOrFallback, { once: true });
+})();
