@@ -4,7 +4,8 @@
 
 @media (max-width: 700px) {
     .hero {
-      padding: 16px 16px 95px;
+        padding-top: calc(var(--hero-header-space) + 34px);
+        padding-bottom: 76px;
     }
 
     .hero-content h1 {
@@ -23,7 +24,7 @@
     }
 
     .hero-social {
-        gap: 30px;
+        margin-top: 22px;
     }
 
     .hero-social a {
@@ -34,8 +35,7 @@
 
 @media (max-height: 500px) {
     .hero {
-        padding-top: 20px;
-        padding-bottom: 40px;
+        padding: 96px 18px 95px;
     }
 
     .hero-content h1 {
@@ -43,10 +43,11 @@
     }
 
     .hero-content p {
-        margin-bottom: 20px;
+        margin-bottom: 28px;
     }
 
     .hero-social {
+        margin-top: 18px;
         gap: 20px;
       }
 }
@@ -1154,5 +1155,211 @@
     .footer-bottom-bar p {
         font-size: 0.78rem;
         line-height: 1.55;
+    }
+}
+
+
+/* ========================================
+   PATCH FINAL - HERO + HEADER FLUTUANTE
+   ======================================== */
+
+:root {
+    --hero-header-space: 132px;
+}
+
+.hero {
+    min-height: 100svh;
+    padding-top: calc(var(--hero-header-space) + 24px);
+}
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition:
+        padding 0.28s ease,
+        background-color 0.28s ease,
+        backdrop-filter 0.28s ease,
+        box-shadow 0.28s ease;
+}
+
+.site-header::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 55%;
+    height: 90px;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.92);
+    opacity: 0;
+    transition:
+        opacity 0.28s ease,
+        height 0.28s ease,
+        transform 0.28s ease;
+    z-index: -1;
+    pointer-events: none;
+    border-bottom: 1px solid rgba(254, 232, 0, 0.14);
+}
+
+body.header-hero .site-header {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    box-shadow: none;
+}
+
+body.header-hero .site-header::before {
+    opacity: 0;
+}
+
+body.header-compact .site-header {
+    height: 130px;
+    padding: 0 16px;
+    align-items: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+body.header-compact .site-header::before {
+    opacity: 1;
+}
+
+.site-header__toggle {
+    top: 4px;
+}
+
+@media (max-width: 768px) {
+    :root {
+        --hero-header-space: 118px;
+    }
+
+    .hero {
+        padding-top: calc(var(--hero-header-space) + 18px);
+    }
+
+    .site-header {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .site-header__logo {
+        width: 82px;
+        transition: width 0.28s ease;
+    }
+
+    .site-header__toggle {
+        width: 74px;
+        height: 74px;
+        transition: width 0.28s ease, height 0.28s ease;
+    }
+
+    .site-header__toggle-icon {
+        width: 86px;
+        height: 86px;
+        transition: width 0.28s ease, height 0.28s ease;
+    }
+
+    body.header-compact .site-header__logo {
+        width: 72px;
+    }
+
+    body.header-compact .site-header__toggle {
+        width: 60px;
+        height: 60px;
+    }
+
+    body.header-compact .site-header__toggle-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .site-header::before {
+        height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --hero-header-space: 110px;
+    }
+
+    .hero {
+        padding-top: calc(var(--hero-header-space) + 28px);
+        padding-bottom: 82px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(1.95rem, 8.8vw, 2.75rem);
+    }
+
+    .hero-content p {
+        width: min(100%, calc(100% - 28px));
+    }
+
+    .site-header {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    body.header-hero .site-header {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    body.header-compact .site-header {
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
+    .site-header__logo {
+        width: 78px;
+    }
+
+    .site-header__toggle {
+        width: 72px;
+        height: 72px;
+    }
+
+    .site-header__toggle-icon {
+        width: 84px;
+        height: 84px;
+    }
+
+    body.header-compact .site-header__logo {
+        width: 70px;
+    }
+
+    body.header-compact .site-header__toggle {
+        width: 58px;
+        height: 58px;
+    }
+
+    body.header-compact .site-header__toggle-icon {
+        width: 68px;
+        height: 68px;
+    }
+
+    .site-header::before {
+        height: 60px;
+        top: 60%;
+    }
+}
+
+@media (max-width: 360px) {
+    :root {
+        --hero-header-space: 106px;
+    }
+
+    .hero {
+        padding-top: calc(var(--hero-header-space) + 14px);
+    }
+
+    .hero-content h1 {
+        font-size: clamp(1.7rem, 9vw, 2.2rem);
+    }
+
+    .hero-social {
+        gap: 22px;
     }
 }
