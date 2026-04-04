@@ -174,3 +174,63 @@ h4 {
         text-shadow: 0 6px 18px rgba(255, 232, 0, 0.08);
     }
 }
+
+/* =========================================
+   INTRO / TELA DE ABERTURA
+========================================= */
+
+body.intro-loading {
+    overflow: hidden;
+    height: 100vh;
+}
+
+.site-intro {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+
+.site-intro__logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.96);
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s ease;
+}
+
+.site-intro__logo {
+    width: clamp(110px, 16vw, 190px);
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 0 12px rgba(255, 230, 0, 0.08));
+}
+
+/* logo aparece */
+.site-intro.is-logo-visible .site-intro__logo-wrap {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* logo some */
+.site-intro.is-logo-hidden .site-intro__logo-wrap {
+    opacity: 0;
+    transform: scale(0.985);
+}
+
+/* tela preta some */
+.site-intro.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
