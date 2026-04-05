@@ -152,18 +152,26 @@ HEADER FIXO + MENU FULLSCREEN
 
 .site-menu__panel {
     width: 100%;
-    min-height: 100vh;
+    min-height: 0;
+    max-height: 100vh;
+    overflow-y: auto;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: clamp(18px, 2.6vh, 36px);
+    justify-content: flex-start;
+    gap: clamp(14px, 1.8vh, 22px);
 
     padding:
-        clamp(70px, 8vh, 115px)
-        clamp(22px, 4vw, 48px)
-        clamp(40px, 6vh, 72px);
+        clamp(60px, 7vh, 100px)
+        clamp(18px, 3vw, 40px)
+        clamp(24px, 4vh, 48px);
+}
+
+.site-menu__panel::before,
+.site-menu__panel::after {
+    content: "";
+    flex: 1;
 }
 
 .site-menu__link {
@@ -173,17 +181,17 @@ HEADER FIXO + MENU FULLSCREEN
     align-items: center;
     justify-content: center;
 
-    min-height: clamp(2px, 6.6vh, 72px);
-    padding: 8px 28px;
+    min-height: clamp(32px, 4.5vh, 48px);
+    padding: 6px 20px;
     margin: 0;
 
     color: #d7c100;
     text-decoration: none;
     text-align: center;
 
-    font-size: clamp(1.45rem, 1.05rem + 1.2vw, 2.6rem);
+    font-size: clamp(1.1rem, 0.85rem + 0.9vw, 2rem);
     font-weight: 600;
-    line-height: 1.06;
+    line-height: 1.1;
 
     transition:
         color 0.28s ease,
