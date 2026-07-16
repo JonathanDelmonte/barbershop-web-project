@@ -1231,7 +1231,7 @@ body.header-compact .site-header::before {
 
 @media (max-width: 768px) {
     :root {
-        --hero-header-space: 118px;
+        --hero-header-space: 112px;
     }
 
     .hero {
@@ -1243,35 +1243,42 @@ body.header-compact .site-header::before {
         padding-right: 20px;
     }
 
+    /* o símbolo da logo tem muito espaço vazio no viewBox (507x492);
+       height explícito encolhe a caixa sem mudar o desenho visível */
     .site-header__logo {
-        width: 82px;
-        transition: width 0.28s ease;
+        width: 84px;
+        height: 80px;
+        transition: width 0.28s ease, height 0.28s ease;
     }
 
     .site-header__toggle {
-        width: 74px;
-        height: 74px;
+        width: 64px;
+        height: 64px;
         transition: width 0.28s ease, height 0.28s ease;
     }
 
     .site-header__toggle-icon {
-        width: 86px;
-        height: 86px;
+        width: 76px;
+        height: 76px;
         transition: width 0.28s ease, height 0.28s ease;
     }
 
-    body.header-compact .site-header__logo {
-        width: 72px;
-    }
-
-    body.header-compact .site-header__toggle {
+    body.header-compact .site-header__logo,
+    body.header-hero .site-header.is-scrolled .site-header__logo {
         width: 60px;
-        height: 60px;
+        height: 58px;
     }
 
-    body.header-compact .site-header__toggle-icon {
-        width: 70px;
-        height: 70px;
+    body.header-compact .site-header__toggle,
+    body.header-hero .site-header.is-scrolled .site-header__toggle {
+        width: 52px;
+        height: 52px;
+    }
+
+    body.header-compact .site-header__toggle-icon,
+    body.header-hero .site-header.is-scrolled .site-header__toggle-icon {
+        width: 62px;
+        height: 62px;
     }
 
     .site-header::before {
@@ -1281,7 +1288,7 @@ body.header-compact .site-header::before {
 
 @media (max-width: 480px) {
     :root {
-        --hero-header-space: 110px;
+        --hero-header-space: 104px;
     }
 
     .hero {
@@ -1298,13 +1305,13 @@ body.header-compact .site-header::before {
     }
 
     .site-header {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     body.header-hero .site-header {
-        padding-top: 16px;
-        padding-bottom: 16px;
+        padding-top: 12px;
+        padding-bottom: 12px;
     }
 
     body.header-compact .site-header {
@@ -1313,31 +1320,43 @@ body.header-compact .site-header::before {
     }
 
     .site-header__logo {
-        width: 78px;
+        width: 76px;
+        height: 74px;
+    }
+
+    /* alinha opticamente o desenho (inset ~24px dentro da caixa)
+       com a margem do conteúdo do hero */
+    .site-header__brand {
+        margin-left: -16px;
     }
 
     .site-header__toggle {
-        width: 72px;
-        height: 72px;
+        width: 56px;
+        height: 56px;
+        margin-right: -8px;
     }
 
     .site-header__toggle-icon {
-        width: 84px;
-        height: 84px;
-    }
-
-    body.header-compact .site-header__logo {
-        width: 70px;
-    }
-
-    body.header-compact .site-header__toggle {
-        width: 58px;
-        height: 58px;
-    }
-
-    body.header-compact .site-header__toggle-icon {
         width: 68px;
         height: 68px;
+    }
+
+    body.header-compact .site-header__logo,
+    body.header-hero .site-header.is-scrolled .site-header__logo {
+        width: 54px;
+        height: 52px;
+    }
+
+    body.header-compact .site-header__toggle,
+    body.header-hero .site-header.is-scrolled .site-header__toggle {
+        width: 48px;
+        height: 48px;
+    }
+
+    body.header-compact .site-header__toggle-icon,
+    body.header-hero .site-header.is-scrolled .site-header__toggle-icon {
+        width: 58px;
+        height: 58px;
     }
 
     .site-header::before {
@@ -1348,7 +1367,7 @@ body.header-compact .site-header::before {
 
 @media (max-width: 360px) {
     :root {
-        --hero-header-space: 106px;
+        --hero-header-space: 100px;
     }
 
     .hero {
