@@ -97,6 +97,64 @@ HEADER FIXO + MENU FULLSCREEN
         color 0.28s ease;
 }
 
+/* =========================================
+   ÍCONE HAMBÚRGUER <-> X (morph)
+
+   Cada barra é um <g> (translada) com um <rect>
+   dentro (gira). Sendo dois elementos, cada um tem
+   seu proprio delay -> o movimento acontece em duas
+   fases em vez de tudo de uma vez.
+========================================= */
+
+/* Estado FECHADO (X -> barras):
+   1o as barras desgiram, 2o se afastam. */
+.site-header__bar {
+    transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1) 0.17s;
+}
+
+.site-header__bar rect {
+    /* gira em torno do proprio centro */
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1) 0s;
+}
+
+.site-header__bar--mid rect {
+    transition:
+        transform 0.22s ease 0.25s,
+        opacity 0.22s ease 0.25s;
+}
+
+/* Estado ABERTO (barras -> X):
+   1o as barras se juntam no centro, 2o giram. */
+.site-header__toggle[aria-expanded="true"] .site-header__bar {
+    transition-delay: 0s;
+}
+
+.site-header__toggle[aria-expanded="true"] .site-header__bar--top {
+    transform: translateY(22px);
+}
+
+.site-header__toggle[aria-expanded="true"] .site-header__bar--bot {
+    transform: translateY(-22px);
+}
+
+.site-header__toggle[aria-expanded="true"] .site-header__bar--top rect {
+    transform: rotate(45deg);
+    transition-delay: 0.17s;
+}
+
+.site-header__toggle[aria-expanded="true"] .site-header__bar--bot rect {
+    transform: rotate(-45deg);
+    transition-delay: 0.17s;
+}
+
+.site-header__toggle[aria-expanded="true"] .site-header__bar--mid rect {
+    opacity: 0;
+    transform: scaleX(0.35);
+    transition-delay: 0s;
+}
+
 .site-header__brand {
     position: relative;
     z-index: 10002;

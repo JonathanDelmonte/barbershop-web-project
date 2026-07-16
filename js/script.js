@@ -109,20 +109,11 @@ document.addEventListener('click', (event) => {
 
   if (!header || !toggleButton || !menu || !menuPanel) return;
 
-  const iconUse = toggleButton.querySelector("use");
-  const ICON_MENU = "assets/icons/sprite.svg#icon-header-menu";
-  const ICON_CLOSE = "assets/icons/sprite.svg#icon-header-close";
-
   let isMenuOpen = false;
   let lastFocusedElement = null;
 
-  function setToggleIcon(isOpen) {
-    if (!iconUse) return;
-
-    const icon = isOpen ? ICON_CLOSE : ICON_MENU;
-    iconUse.setAttribute("href", icon);
-    iconUse.setAttribute("xlink:href", icon);
-  }
+  /* O icone (hamburguer <-> X) e animado no CSS a
+     partir de [aria-expanded] do proprio botao. */
 
   function lockScroll() {
     document.body.classList.add("menu-open", "menu-is-open");
@@ -147,7 +138,6 @@ document.addEventListener('click', (event) => {
     toggleButton.setAttribute("aria-label", "Fechar menu");
     menu.setAttribute("aria-hidden", "false");
 
-    setToggleIcon(true);
     lockScroll();
 
     const firstLink = menu.querySelector(".site-menu__link");
@@ -166,7 +156,6 @@ document.addEventListener('click', (event) => {
     toggleButton.setAttribute("aria-label", "Abrir menu");
     menu.setAttribute("aria-hidden", "true");
 
-    setToggleIcon(false);
     unlockScroll();
 
     if (restoreFocus && lastFocusedElement) {
@@ -327,7 +316,6 @@ function scrollToSection(section, extraOffset = 0) {
 
   updateHeaderOnScroll();
   updateCurrentMenuItem();
-  setToggleIcon(false);
   menu.setAttribute("aria-hidden", "true");
   
   document.body.classList.remove("menu-open", "menu-is-open");
