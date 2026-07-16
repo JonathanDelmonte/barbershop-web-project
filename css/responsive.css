@@ -4,32 +4,48 @@
 
 @media (max-width: 700px) {
     .hero {
-        padding-top: calc(var(--hero-header-space) + 34px);
-        padding-bottom: 76px;
+        /* sobe levemente o bloco central: melhor equilíbrio óptico */
+        grid-template-rows: 0.85fr auto 1.15fr auto;
+        padding-top: calc(var(--hero-header-space) + 30px);
+        padding-bottom: 72px;
+        padding-inline: 24px;
     }
 
     .hero-content h1 {
-        font-size: clamp(1.8rem, 9vw, 2.6rem);
+        font-size: clamp(1.9rem, 8.6vw, 2.6rem);
+        line-height: 1.14;
+        text-wrap: balance;
+        /* brilho centrado no lugar da sombra deslocada (borrada no celular) */
+        text-shadow: 0 12px 32px rgba(255, 232, 0, 0.16);
+        margin-bottom: 16px;
     }
 
     .hero-content p {
-        width: min(100%, calc(100% - 100px));
-        font-size: 0.95rem;
-        margin-bottom: 20px;
+        width: 100%;
+        max-width: 36ch;
+        font-size: 1rem;
+        line-height: 1.65;
+        opacity: 0.85;
+        margin-bottom: 32px;
     }
 
     .hero-button {
-        font-size: 0.9rem;
-        padding: 20px 16px;
+        width: min(100%, 330px);
+        font-size: 0.95rem;
+        letter-spacing: 0.09em;
+        padding: 17px 24px;
     }
 
     .hero-social {
-        margin-top: 22px;
+        margin-top: 26px;
+        /* 5 ícones numa linha só até ~320px; o wrap fica de reserva */
+        gap: clamp(12px, 4vw, 22px);
+        padding-inline: 0;
     }
 
     .hero-social a {
-        width: 36px;
-        height: 36px;
+        width: 44px;
+        height: 44px;
       }
 }
 
@@ -1292,16 +1308,9 @@ body.header-compact .site-header::before {
     }
 
     .hero {
-        padding-top: calc(var(--hero-header-space) + 28px);
-        padding-bottom: 82px;
-    }
-
-    .hero-content h1 {
-        font-size: clamp(1.95rem, 8.8vw, 2.75rem);
-    }
-
-    .hero-content p {
-        width: min(100%, calc(100% - 28px));
+        padding-top: calc(var(--hero-header-space) + 24px);
+        padding-bottom: 78px;
+        padding-inline: 20px;
     }
 
     .site-header {
@@ -1371,14 +1380,23 @@ body.header-compact .site-header::before {
     }
 
     .hero {
-        padding-top: calc(var(--hero-header-space) + 14px);
+        padding-top: calc(var(--hero-header-space) + 12px);
     }
 
     .hero-content h1 {
-        font-size: clamp(1.7rem, 9vw, 2.2rem);
+        font-size: clamp(1.6rem, 8.6vw, 2.2rem);
+    }
+}
+
+/* telas realmente estreitas: ícones menores seguram a linha única
+   até ~280px; abaixo disso o flex-wrap entra como reserva */
+@media (max-width: 340px) {
+    .hero-social {
+        gap: clamp(9px, 3.5vw, 16px);
     }
 
-    .hero-social {
-        gap: 22px;
+    .hero-social a {
+        width: 40px;
+        height: 40px;
     }
 }
