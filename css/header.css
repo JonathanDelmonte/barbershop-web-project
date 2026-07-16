@@ -183,6 +183,59 @@ HEADER FIXO + MENU FULLSCREEN
     outline-offset: 4px;
 }
 
+/* =========================================
+   ENTRADA DO HEADER (depois da intro)
+
+   Dispara sozinho quando o JS remove
+   .intro-loading do body.
+========================================= */
+
+@keyframes headerItemReveal {
+    from {
+        opacity: 0;
+        transform: translateY(-16px) scale(0.94);
+        filter: blur(7px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* "backwards" (e nao "forwards"): segura o estado
+   inicial durante o delay e devolve o elemento ao
+   CSS normal no fim -- senao o transform final da
+   animacao venceria o :hover para sempre. */
+.site-header__brand {
+    animation: headerItemReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s backwards;
+}
+
+.site-header__toggle {
+    animation: headerItemReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.42s backwards;
+}
+
+/* durante a intro o header fica fora de cena */
+body.intro-loading .site-header__brand,
+body.intro-loading .site-header__toggle {
+    animation: none;
+    opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .site-header__brand,
+    .site-header__toggle {
+        animation-duration: 0.01ms;
+        animation-delay: 0s;
+    }
+
+    .site-header__bar,
+    .site-header__bar rect {
+        transition-duration: 0.01ms;
+        transition-delay: 0s;
+    }
+}
+
 .site-menu {
     position: fixed;
     inset: 0;
