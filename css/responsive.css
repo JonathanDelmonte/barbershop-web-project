@@ -1300,6 +1300,21 @@ body.header-compact .site-header::before {
     .site-header::before {
         height: 80px;
     }
+
+    /* a logo e o botão encolheram no mobile; a caixa de 130px
+       e a faixa preta em offset fixo (desktop) deixavam a faixa
+       abaixo do conteúdo -- aqui as duas passam a seguir a
+       altura real do header */
+    body.header-compact .site-header {
+        height: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    body.header-compact .site-header::before {
+        top: 50%;
+        height: 100%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1366,11 +1381,6 @@ body.header-compact .site-header::before {
     body.header-hero .site-header.is-scrolled .site-header__toggle-icon {
         width: 58px;
         height: 58px;
-    }
-
-    .site-header::before {
-        height: 60px;
-        top: 60%;
     }
 }
 
