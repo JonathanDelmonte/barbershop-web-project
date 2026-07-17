@@ -222,9 +222,34 @@ body.intro-loading .site-header__toggle {
         transition-duration: 0.01ms;
         transition-delay: 0s;
     }
+
+    .site-menu,
+    .site-menu.is-open {
+        clip-path: none;
+        transition: opacity 0.15s ease, visibility 0.15s;
+    }
+
+    .site-menu {
+        opacity: 0;
+    }
+
+    .site-menu.is-open {
+        opacity: 1;
+    }
+
+    .site-menu.is-open .site-menu__link {
+        animation: none;
+    }
 }
 
+/* Overlay revelado por um circulo (clip-path) que
+   expande a partir do botao do menu e recolhe de
+   volta para ele ao fechar. As coordenadas abaixo
+   aproximam o centro do botao no header. */
 .site-menu {
+    --menu-origin-x: calc(100% - clamp(18px, 3vw, 42px) - clamp(36px, 4.25vw, 75px));
+    --menu-origin-y: calc(clamp(18px, 2.2vw, 34px) + clamp(36px, 4.25vw, 75px));
+
     position: fixed;
     inset: 0;
     z-index: 10000;
@@ -235,18 +260,24 @@ body.intro-loading .site-header__toggle {
 
     background: #0A0A0A;
 
-    opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    clip-path: circle(0% at var(--menu-origin-x) var(--menu-origin-y));
+    /* fechar: rapido, acelerando de volta ao botao */
     transition:
-        opacity 0.35s ease,
-        visibility 0.35s ease;
+        clip-path 0.4s cubic-bezier(0.5, 0, 0.75, 0.5),
+        visibility 0.4s;
 }
 
 .site-menu.is-open {
-    opacity: 1;
     visibility: visible;
     pointer-events: auto;
+    /* 142% ~ diagonal do viewport a partir do canto */
+    clip-path: circle(142% at var(--menu-origin-x) var(--menu-origin-y));
+    /* abrir: desacelerando ate cobrir a tela */
+    transition:
+        clip-path 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 0.55s;
 }
 
 .site-menu__panel {
@@ -323,6 +354,33 @@ body.intro-loading .site-header__toggle {
 .site-menu__link.is-current {
     color: #f0db11;
 }
+
+/* Entrada escalonada dos links quando o menu abre.
+   So o "from" e declarado + fill backwards: ao
+   terminar, o link volta ao CSS normal e o :hover
+   (transform/transition) segue funcionando. */
+@keyframes menuLinkIn {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+}
+
+.site-menu.is-open .site-menu__link {
+    animation: menuLinkIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.site-menu.is-open .site-menu__link:nth-child(1)  { animation-delay: 0.08s; }
+.site-menu.is-open .site-menu__link:nth-child(2)  { animation-delay: 0.11s; }
+.site-menu.is-open .site-menu__link:nth-child(3)  { animation-delay: 0.14s; }
+.site-menu.is-open .site-menu__link:nth-child(4)  { animation-delay: 0.17s; }
+.site-menu.is-open .site-menu__link:nth-child(5)  { animation-delay: 0.20s; }
+.site-menu.is-open .site-menu__link:nth-child(6)  { animation-delay: 0.23s; }
+.site-menu.is-open .site-menu__link:nth-child(7)  { animation-delay: 0.26s; }
+.site-menu.is-open .site-menu__link:nth-child(8)  { animation-delay: 0.29s; }
+.site-menu.is-open .site-menu__link:nth-child(9)  { animation-delay: 0.32s; }
+.site-menu.is-open .site-menu__link:nth-child(10) { animation-delay: 0.35s; }
+.site-menu.is-open .site-menu__link:nth-child(11) { animation-delay: 0.38s; }
 
 body.menu-open,
 body.menu-is-open {
