@@ -81,17 +81,18 @@ A tipografia é serifada (Georgia) em toda a página, reforçando o tom clássic
 
 | Menu fullscreen | Carrossel da equipe |
 |:---:|:---:|
-| <img src="docs/media/menu.gif" alt="Menu fullscreen abrindo com o ícone hambúrguer se transformando em X" width="420"> | <img src="docs/media/team.gif" alt="Carrossel da equipe alternando cards com blur e escala" width="420"> |
+| <img src="docs/media/menu.gif" alt="Menu fullscreen abrindo em um círculo que expande do botão enquanto o ícone hambúrguer vira X" width="420"> | <img src="docs/media/team.gif" alt="Carrossel da equipe alternando cards com blur e escala" width="420"> |
 
 </div>
 
 - **Intro cinematográfica:** a página abre em preto, aguarda o vídeo do hero estar pronto (com fallback de 1,2 s), revela a logo e então entrega a página. O overlay é removido do DOM ao final, sem custo residual.
 - **Header que entra em cena:** logo e botão do menu surgem com blur + deslocamento somente depois da intro, encadeados por delays.
-- **Morph hambúrguer ↔ X:** o ícone do menu é um SVG cujas barras transladam e rotacionam em duas fases coreografadas, dirigidas apenas por CSS a partir do atributo `aria-expanded` do botão.
+- **Morph hambúrguer ↔ X:** o ícone do menu é um SVG cujas barras transladam e rotacionam em uma única transição reversível — cliques rápidos não dessincronizam — dirigida apenas por CSS a partir do atributo `aria-expanded` do botão.
+- **Menu que irradia do botão:** o overlay fullscreen abre como um círculo (`clip-path`) que expande a partir do botão e recolhe de volta ao fechar, com os links de navegação entrando em cascata.
 - **Carrossel com profundidade:** o card ativo flutua em loop suave; os vizinhos recuam com escala, blur e opacidade reduzidos, criando leitura de camadas sem WebGL.
 - **Microinterações generalizadas:** títulos, botões, cards de serviço, ícones sociais e o cartão de localização respondem ao hover com elevação, brilho e sombras douradas (apenas em dispositivos com ponteiro fino, via media query `hover: hover`).
 - **Rolagem assinada:** a navegação do menu usa animação de scroll própria (`requestAnimationFrame` + easing cúbico, ~900 ms) com offset individual por link, em vez do scroll nativo.
-- **Movimento reduzido respeitado:** `prefers-reduced-motion` zera durações e delays das animações do header.
+- **Movimento reduzido respeitado:** `prefers-reduced-motion` zera durações e delays das animações do header e troca a abertura circular do menu por um fade simples.
 
 ## Funcionalidades
 
@@ -102,7 +103,7 @@ A tipografia é serifada (Georgia) em toda a página, reforçando o tom clássic
 | **Equipe** | Carrossel circular com autoplay (3,8 s), navegação manual e legenda que se reanima a cada troca |
 | **Clube de Assinaturas** | Apresentação do clube com arte própria: cortes ilimitados, brindes e vantagens em parceiros |
 | **Fidelidade & Combos** | Duas fileiras espelhadas com seis cards iconográficos flutuantes sobre fotos do espaço |
-| **Loja** | Vitrine com produto em destaque sob glow dourado e grade de produtos da linha própria |
+| **Loja** | Vitrine com produto em destaque flutuando sob glow dourado e grade da linha própria com nome e categoria em cada produto |
 | **Unidades** | Cartão de localização com Google Maps + tour virtual 360° (Street View), ambos com trava anti-scroll acidental |
 | **Escola de Barbeiros** | Chamada institucional para a formação de novos profissionais |
 | **Contato & Franquia** | Contato, trabalhe conosco, expansão por franquias e a história da marca |
