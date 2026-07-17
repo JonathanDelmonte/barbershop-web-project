@@ -2,10 +2,47 @@
     position: relative;
     overflow: hidden;
     background:
-        radial-gradient(circle at center, rgba(199, 157, 31, 0.08), transparent 45%),
-        linear-gradient(to bottom, #181818, #171717 35%, #131313 100%);
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(199, 157, 31, 0.06), transparent 70%),
+        linear-gradient(to bottom, #181818, #121212 40%, #0b0b0b 100%);
     padding: clamp(60px, 8vw, 120px) clamp(20px, 5vw, 70px);
     min-height: 80vh;
+}
+
+/* textura fina de risca-de-giz dourada, esmaecida no centro */
+.store::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        115deg,
+        rgba(212, 175, 55, 0.032) 0px,
+        rgba(212, 175, 55, 0.032) 1px,
+        transparent 1px,
+        transparent 10px
+    );
+    -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, transparent 28%, #000 80%);
+    mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, transparent 28%, #000 80%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* marca d'água editorial atrás do conteúdo */
+.store::after {
+    content: "PRIME";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(8rem, 18vw, 18rem);
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(212, 175, 55, 0.07);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
 }
 
 .store-wrapper {
@@ -36,6 +73,30 @@
     width: 100%;
 }
 
+.store-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(10px, 1.4vw, 16px);
+    font-size: clamp(0.75rem, 1vw, 0.88rem);
+    font-weight: 600;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: rgba(221, 214, 200, 0.62);
+}
+
+.store-eyebrow::before,
+.store-eyebrow::after {
+    content: "";
+    width: clamp(26px, 3vw, 44px);
+    height: 1px;
+    flex-shrink: 0;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.65));
+}
+
+.store-eyebrow::after {
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.65), transparent);
+}
+
 .store-text h2 {
     font-size: clamp(2.2rem, 4vw, 3.5rem);
     line-height: 1.05;
@@ -61,7 +122,19 @@
     background: linear-gradient(90deg, transparent 0%, #c79d1f 20%, #fee800 50%, #988000 80%, transparent 100%);
 }
 
+/* =========================================
+   DESTAQUE / VITRINE PRINCIPAL
+========================================= */
+
 .store-highlight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(16px, 2vw, 24px);
+    width: 100%;
+}
+
+.store-highlight-stage {
     position: relative;
     display: flex;
     justify-content: center;
@@ -72,32 +145,85 @@
 
 .store-highlight-glow {
     position: absolute;
-    top: 50%;
+    top: 48%;
     left: 50%;
-    width: 70%;
-    height: 70%;
+    width: 62%;
+    height: 62%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(214, 181, 41, 0.24) 0%, rgba(214, 181, 41, 0.10) 45%, transparent 75%);
-    filter: blur(55px);
+    background: radial-gradient(circle, rgba(214, 181, 41, 0.18) 0%, rgba(214, 181, 41, 0.07) 48%, transparent 74%);
+    filter: blur(52px);
     z-index: -1;
     pointer-events: none;
 }
 
-.store-highlight img {
-    width: clamp(520px, 38vw, 760px);
+/* sombra de chão sob o produto */
+.store-highlight-stage::after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    width: 52%;
+    height: 24px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, rgba(31, 26, 8, 0.25) 45%, transparent 70%);
+    filter: blur(7px);
+    animation: storeShadow 7s ease-in-out infinite;
+    z-index: -2;
+    pointer-events: none;
+}
+
+.store-highlight-stage img {
+    width: clamp(480px, 36vw, 700px);
     max-width: 100%;
     height: auto;
     display: block;
     object-fit: contain;
-    filter: drop-shadow(0 26px 46px rgba(0, 0, 0, 0.42));
-    transition: transform 0.45s ease, filter 0.45s ease;
+    filter: drop-shadow(0 26px 40px rgba(0, 0, 0, 0.45));
+    animation: storeFloat 7s ease-in-out infinite;
+    transition: filter 0.45s ease;
 }
 
-.store-highlight:hover img {
-    transform: translateY(-8px) scale(1.02);
-    filter: drop-shadow(0 22px 50px rgba(199, 157, 31, 0.16));
+.store-highlight:hover .store-highlight-stage img {
+    filter: drop-shadow(0 30px 55px rgba(199, 157, 31, 0.22));
 }
+
+.store-highlight-caption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+}
+
+.store-highlight-caption strong {
+    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.store-highlight-caption span {
+    font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+    font-style: italic;
+    letter-spacing: 0.06em;
+    opacity: 0.75;
+}
+
+@keyframes storeFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+}
+
+@keyframes storeShadow {
+    0%, 100% { transform: translateX(-50%) scaleX(1); opacity: 0.85; }
+    50%      { transform: translateX(-50%) scaleX(0.88); opacity: 0.55; }
+}
+
+/* =========================================
+   GRADE DE PRODUTOS
+========================================= */
 
 .store-right {
     position: relative;
@@ -112,97 +238,135 @@
     max-width: 760px;
     display: grid;
     grid-template-columns: repeat(2, minmax(220px, 1fr));
-    gap: clamp(24px, 4vw, 48px);
-    align-items: center;
+    gap: clamp(24px, 3.2vw, 44px);
+    align-items: start;
     position: relative;
     z-index: 2;
-    isolation: isolate;
-}
-
-.store-products::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 85%;
-    height: 85%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        rgba(199, 157, 31, 0.14) 0%,
-        rgba(199, 157, 31, 0.08) 38%,
-        rgba(199, 157, 31, 0.03) 58%,
-        transparent 75%
-    );
-    filter: blur(60px);
-    z-index: -1;
-    pointer-events: none;
 }
 
 .store-card {
-    position: relative;
-    padding: 2px;
-    border-radius: 18px;
-    background: linear-gradient(135deg, #8f7400 0%, #fee800 45%, #c79d1f 70%, #7c6200 100%);
-    transition: transform 0.45s ease, box-shadow 0.45s ease, filter 0.45s ease;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 1.4vw, 18px);
     width: 100%;
     min-width: 0;
+    transition: transform 0.45s ease;
 }
 
+/* estojo escuro com friso dourado */
 .store-card-inner {
-    background: #f7f7f7;
-    border-radius: 16px;
+    position: relative;
+    padding: clamp(10px, 1.1vw, 15px);
+    border-radius: 18px;
+    background: linear-gradient(160deg, #1d1d1d 0%, #0e0e0e 100%);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.45s ease, box-shadow 0.45s ease;
+}
+
+/* caixa de luz marfim onde a foto vive */
+.store-card-photo {
+    position: relative;
+    border-radius: 10px;
     overflow: hidden;
     aspect-ratio: 1 / 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+    background: radial-gradient(circle at 50% 40%, #ffffff 52%, #f1ede2 100%);
+    isolation: isolate;
 }
 
-.store-card img {
+.store-card-photo img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     display: block;
-    transition: transform 0.6s ease, filter 0.6s ease;
+    mix-blend-mode: multiply;
+    transition: transform 0.6s ease;
 }
 
-.store-card::after {
+/* vinheta interna sutil */
+.store-card-photo::before {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: 18px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.14), transparent 35%, rgba(255,255,255,0.06));
-    opacity: 0;
-    transition: opacity 0.45s ease;
+    border-radius: inherit;
+    box-shadow:
+        inset 0 0 34px rgba(31, 26, 8, 0.14),
+        inset 0 -18px 30px rgba(31, 26, 8, 0.08);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* brilho que varre a foto no hover */
+.store-card-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 42%, rgba(240, 210, 100, 0.28) 50%, transparent 58%);
+    transform: translateX(-130%);
+    transition: transform 0.9s ease;
+    z-index: 3;
     pointer-events: none;
 }
 
 .store-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
-    filter: brightness(1.03);
 }
 
-.store-card:hover img {
-    transform: scale(1.03);
+.store-card:hover .store-card-inner {
+    border-color: rgba(240, 210, 77, 0.6);
+    box-shadow:
+        0 26px 50px rgba(0, 0, 0, 0.5),
+        0 0 24px rgba(212, 175, 55, 0.12);
 }
 
-.store-card:hover::after {
-    opacity: 1;
+.store-card:hover .store-card-photo img {
+    transform: scale(1.04);
+}
+
+.store-card:hover .store-card-photo::after {
+    transform: translateX(130%);
+}
+
+.store-card-caption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    text-align: center;
+}
+
+.store-card-caption h4 {
+    font-size: clamp(0.95rem, 1.2vw, 1.12rem);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.store-card-caption span {
+    font-size: clamp(0.8rem, 1vw, 0.9rem);
+    font-style: italic;
+    letter-spacing: 0.05em;
+    opacity: 0.7;
 }
 
 .store-button-row {
     grid-column: 1 / -1;
     display: flex;
     justify-content: center;
-    padding-block: 6px;
+    align-self: center;
+    padding-block: clamp(4px, 0.8vw, 10px);
     width: 100%;
 }
 
 .store-button {
     min-width: min(100%, 320px);
     text-align: center;
+    letter-spacing: 0.08em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .store-highlight-stage img,
+    .store-highlight-stage::after {
+        animation: none;
+    }
 }
