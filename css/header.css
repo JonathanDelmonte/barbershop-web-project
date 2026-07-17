@@ -76,14 +76,11 @@ HEADER FIXO + MENU FULLSCREEN
     
     padding: 0;
     transition:
-    transform 0.28s ease,
-    opacity 0.28s ease,
-    color 0.28s ease,
-    width 0.28s ease,
-    height 0.28s ease,
-    transform 0.28s ease,
-    opacity 0.28s ease,
-    color 0.28s ease;
+        transform 0.28s ease,
+        opacity 0.28s ease,
+        color 0.28s ease,
+        width 0.28s ease,
+        height 0.28s ease;
 }
 
 .site-header__toggle-icon {
@@ -101,34 +98,28 @@ HEADER FIXO + MENU FULLSCREEN
    ÍCONE HAMBÚRGUER <-> X (morph)
 
    Cada barra é um <g> (translada) com um <rect>
-   dentro (gira). Sendo dois elementos, cada um tem
-   seu proprio delay -> o movimento acontece em duas
-   fases em vez de tudo de uma vez.
+   dentro (gira). Translação e rotação acontecem
+   juntas, sem delay: a transição pode ser
+   interrompida/revertida em qualquer ponto sem
+   dessincronizar (cliques rápidos não bugam).
 ========================================= */
 
-/* Estado FECHADO (X -> barras):
-   1o as barras desgiram, 2o se afastam. */
 .site-header__bar {
-    transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1) 0.17s;
+    transition: transform 0.26s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .site-header__bar rect {
     /* gira em torno do proprio centro */
     transform-box: fill-box;
     transform-origin: center;
-    transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1) 0s;
+    /* leve overshoot na rotação para dar vida */
+    transition: transform 0.3s cubic-bezier(0.34, 1.4, 0.64, 1);
 }
 
 .site-header__bar--mid rect {
     transition:
-        transform 0.22s ease 0.25s,
-        opacity 0.22s ease 0.25s;
-}
-
-/* Estado ABERTO (barras -> X):
-   1o as barras se juntam no centro, 2o giram. */
-.site-header__toggle[aria-expanded="true"] .site-header__bar {
-    transition-delay: 0s;
+        transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.15s ease;
 }
 
 .site-header__toggle[aria-expanded="true"] .site-header__bar--top {
@@ -141,18 +132,15 @@ HEADER FIXO + MENU FULLSCREEN
 
 .site-header__toggle[aria-expanded="true"] .site-header__bar--top rect {
     transform: rotate(45deg);
-    transition-delay: 0.17s;
 }
 
 .site-header__toggle[aria-expanded="true"] .site-header__bar--bot rect {
     transform: rotate(-45deg);
-    transition-delay: 0.17s;
 }
 
 .site-header__toggle[aria-expanded="true"] .site-header__bar--mid rect {
     opacity: 0;
     transform: scaleX(0.35);
-    transition-delay: 0s;
 }
 
 .site-header__brand {
